@@ -1,0 +1,4 @@
+'democrat', 'republican', 'indecision2016',
+            'trump', 'hillary', 'clinton', 'donald', 'cruz', 'cruz2016', 'trump2016',
+            'kasich', 'decision2016', 'obama', 'bernie', 'sanders', 'feelthebern',
+            'makeamericagreatagain'

@@ -1,0 +1,8 @@
+#import the json
+import json
+from pprint import pprint
+
+data = open("input/tweets1.json").read()
+tdata = json.loads(data)
+
+print(tdata[1])
