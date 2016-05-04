@@ -1,4 +1,3 @@
-from nltk.classify import NaiveBayesClassifier
 from nltk.corpus import subjectivity
 from nltk.sentiment import SentimentAnalyzer
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
@@ -29,17 +28,17 @@ for i in sentiments:
 labels=[]
 for i in polarities:
      if i>=0.0:
-         labels.append("pos")
+         labels.append("1")
      else:
-         labels.append("neg")
+         labels.append("0")
 
 labeled_data = []
 for i in range(len(var)):
-    labeled_data.append(var[i]+","+labels[i])
+    labeled_data.append(labels[i]+","+var[i])
 
 temp=""
 for s in labeled_data:
     temp += s + "\n"
 
-file1 = open("/home/madhura/ML_Spring16/SentimentAnalysis_NLTK_NB/labeled.txt","w+")
+file1 = open("/home/madhura/ML_Spring16/MLProject/data/GroundTruth.txt","w+")
 file1.write(temp)
