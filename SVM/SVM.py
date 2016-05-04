@@ -17,8 +17,9 @@ sqlContext = SQLContext(sc)
 
 lines = sc.textFile("/home/ankita/MLProject/data/OriginalTraining.txt")
 parts = lines.map(lambda l: l.split(","))
-f = parts.map(lambda p: Row(tweet=p[0], label=int(float(p[1]))))
-
+#f = parts.map(lambda p: Row(tweet=p[0], label=int(float(p[1]))))
+indexedTweets = parts.zipWithIndex()
+f = indexedTweets.map(lambda (a,b): Row(index=int(b),tweet=a[0],label=int(float(a[1]))))
 schemaTweets = sqlContext.createDataFrame(f)
 schemaTweets.registerTempTable("data")
 
@@ -35,10 +36,7 @@ rescaledData = idfModel.transform(featurizedData)
  #   print(features_label)
 rescaledData.printSchema()
 
-
 """
-
-
 # Build the model
 model = SVMWithSGD.train(parsedData, iterations=100)
 
