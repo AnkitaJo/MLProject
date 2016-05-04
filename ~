@@ -1,0 +1,23 @@
+#Code to read the hash tags and follow the trends on twitter
+
+import matplotlib
+import codecs
+
+
+
+#dictionary
+
+hashtags ={}
+
+with open("file1.txt") as f:
+	for line in f:
+		tweet = line.split(",")
+		for t in tweet[1]:
+			if(t.startswith('#')):
+				if t in hashtags:
+						hashtags[t]+=1.0
+					else:
+						hashtags[t]=1.0
+
+for keys,values in hashtags.items():
+	print(keys + ": "+values)
