@@ -9,7 +9,7 @@ import sys
 import operator
 
 hashtags ={}
-with open("originalWithHashtags1.txt") as f:
+with open("../originalWithHashtags1.txt") as f:
 	for line in f:
 		tweet = line.split(",")
 		t = tweet[1].split()
@@ -26,7 +26,7 @@ for keys,values in hashtags.items():
 reload(sys)
 sys.setdefaultencoding('utf8')
 
-newA = dict(sorted(hashtags.iteritems(), key=operator.itemgetter(1), reverse=True)[:15])
+newA = dict(sorted(hashtags.iteritems(), key=operator.itemgetter(1), reverse=True)[:10])
 #plot
 """
 names = hashtags.keys()
@@ -44,8 +44,7 @@ hashes = range(len(newA.keys()))
 counts = newA.values()
 
 LABELS = newA.keys()
-
-plt.bar(hashes, counts, align ='center',width = 0.001)
+plt.bar(hashes, counts, align ='center',width = 0.010)
 plt.xticks(hashes, LABELS)
 plt.show()
 

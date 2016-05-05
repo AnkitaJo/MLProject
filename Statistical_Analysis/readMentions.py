@@ -13,7 +13,7 @@ berniestring = "sanders bernie berniesanders"
 hillarystring = "hillary clinton hillaryclinton"
 cruzstring = "cruz ted tedcruz"
 
-with open("originalWithoutHashtags1.txt") as f:
+with open("../originalWithoutHashtags1.txt") as f:
         for l in f:
 		line = l.lower()
 		s = line.split()
