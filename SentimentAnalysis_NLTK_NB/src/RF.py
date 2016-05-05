@@ -30,7 +30,7 @@ training = trainlabels.zip(traintfidf).map(lambda x : LabeledPoint(x[0], x[1]))
 MLUtils.saveAsLibSVMFile(training.coalesce(1),"/home/madhura/ML_Spring16/MLProject/data/libsvmfile")
 data = MLUtils.loadLibSVMFile(sc, "/home/madhura/ML_Spring16/MLProject/data/libsvmfile/part-00000")
 (trainingData, testData) = data.randomSplit([0.7, 0.3])
-model = RandomForest.trainClassifier(trainingData, numClasses=2, categoricalFeaturesInfo={},
+model = RandomForest.trainClassifier(data, numClasses=2, categoricalFeaturesInfo={},
                                      numTrees=3, featureSubsetStrategy="auto",
                                      impurity='gini', maxDepth=4, maxBins=32)
-predictions = model.predict(testData.map(lambda x: x.features))                                     
+model.save(sc, "/home/madhura/ML_Spring16/MLProject/SentimentAnalysis_NLTK_NB/src/myRandomForestClassificationModel")
